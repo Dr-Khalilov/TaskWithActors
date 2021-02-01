@@ -31,7 +31,6 @@
 .cardWrapper {
     display: flex;
     align-items: stretch;
-    border: 1px solid;
     margin: 2rem 1rem;
 }
 
@@ -69,7 +68,6 @@
     font-size: large;
     letter-spacing: normal;
     text-transform: capitalize;
-    /*text-align: start;*/
     margin: 10px 0;
 }
 
@@ -81,9 +79,9 @@
     text-align: center;
 }
 .cardDescription {
-    /*margin: 30px 0;*/
-    color: black;
-    text-align: start;
+    margin: 30px 0;
+    color: grey;
+    text-align: justify;
 }
 
 .cardLink {
