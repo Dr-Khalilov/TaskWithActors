@@ -18,7 +18,9 @@
 }
 
 .imagePlaceholder:empty::after,
-.cardName:empty::after {
+.cardName:empty::after,
+.cardSpecialty:empty::after,
+.cardDescription:empty::after{
     content: 'Unknown';
 }
 

@@ -18,38 +18,9 @@ function createPlaceCardElements(place) {
             createElement('h3', { classNames: ['cardSpecialty'] }, [
                 document.createTextNode(specialty || '')]),
             createElement('p', { classNames: ['cardDescription'] }, [
-                document.createTextNode(description)])])]);
+                document.createTextNode(description || '')])])]);
 }
 
-function createContacts(contacts = []) {
-    return contacts.map((contactLink) => {
-        const { hostname } = new URL(contactLink);
-        const src = mapLink.get(hostname);
-        return createElement('img', {
-            classNames: ['cardIcon'],
-            attributes: { 'src': src, 'alt': 'contact' },
-        });
-    })
-}
-
-/**
- * @param {string} type
- * @param {object} options
- * @param {string[]} options.classNames
- * @param {object} options.attributes
- * @param {function} options.onClick
- * @param {HTMLElement[]} children
- */
-function createElement(type, { classNames, onClick, attributes }, children) {
-    const elem = document.createElement(type);
-    elem.classList.add(...classNames);
-    elem.onclick = onClick;
-    // for (const [attrName, attrValue] of Object.entries(attributes)) {
-    //     elem.setAttribute(attrName, attrValue);
-    // }
-    elem.append(...children);
-    return elem;
-}
 
 function createCardImage(place) {
     const { firstName, id } = place;
@@ -81,10 +52,41 @@ function imageErrorHandler({ target }) {
 }
 
 function imageLoadHandler({target: {dataset: {id}},target}) {
-    return document.getElementById(`wrapper${id}`).append(target);
+    document.getElementById(`wrapper${id}`).append(target);
 }
 
 // UTILS
+/**
+ * @param {string} type
+ * @param {object} options
+ * @param {string[]} options.classNames
+ * @param {object} options.attributes
+ * @param {function} options.onClick
+ * @param {HTMLElement[]} children
+ */
+function createElement(type, { classNames, onClick, attributes }, children) {
+    const elem = document.createElement(type);
+    elem.classList.add(...classNames);
+    elem.onclick = onClick;
+    // for (const [attrName, attrValue] of Object.entries(attributes)) {
+    //     elem.setAttribute(attrName, attrValue);
+    // }
+    elem.append(...children);
+    return elem;
+}
+
+
+function createContacts(contacts = []) {
+    return contacts.map((contactLink) => {
+        const { hostname } = new URL(contactLink);
+        const src = mapLink.get(hostname);
+        return createElement('img', {
+            classNames: ['cardIcon'],
+            attributes: { 'src': src, 'alt': 'contact' },
+        });
+    })
+}
+
 function stringToColour(str) {
     let i;
     let hash = 0;
