@@ -12,7 +12,6 @@ cardContainer.append(...cards);
 function createPlaceCardElements(place) {
     const { firstName, lastName, description, specialty } = place;
     return createElement('li', { classNames: ['cardWrapper'] }, [
-        createCardImage(place),
         createElement('article', { classNames: ['cardContainer'] }, [
             createCardImage(place), createElement('h2', { classNames: ['cardName'] }, [
                 document.createTextNode(`${firstName} ${lastName}` || '')]),
@@ -82,10 +81,7 @@ function imageErrorHandler({ target }) {
 }
 
 function imageLoadHandler({target: {dataset: {id}},target}) {
-    debugger
-    const test =   document.getElementById(`wrapper${id}`)
-    console.log(test)
-    test.append(target);
+    return document.getElementById(`wrapper${id}`).append(target);
 }
 
 // UTILS
