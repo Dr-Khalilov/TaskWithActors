@@ -1,7 +1,7 @@
 'use strict';
 
-new URL('https://www.facebook.com/DwayneJohnson'); // {hostname}
-new Map().set('www.facebook.com', 'src to fb icon'); // key-hostname
+/* new URL('https://www.facebook.com/DwayneJohnson'); // {hostname}
+new Map().set('www.facebook.com', 'src to fb icon'); // key-hostname */
 
 const cardContainer = document.getElementById('root');
 
@@ -12,18 +12,14 @@ cardContainer.append(...cards);
 function createPlaceCardElements(place) {
     const { firstName, lastName, description, specialty } = place;
     return createElement('li', { classNames: ['cardWrapper'] }, [
-        createCardImage(place), createElement('article', { classNames: ['cardContainer'] }, [
+        createCardImage(place),
+        createElement('article', { classNames: ['cardContainer'] }, [
             createCardImage(place), createElement('h2', { classNames: ['cardName'] }, [
                 document.createTextNode(`${firstName} ${lastName}` || '')]),
             createElement('h3', { classNames: ['cardSpecialty'] }, [
                 document.createTextNode(specialty || '')]),
             createElement('p', { classNames: ['cardDescription'] }, [
-                document.createTextNode(description || '')]),
-            createElement('div', { classNames: ['cardLink'] }, [
-                createElement('a', { classNames: ['link'] }, [
-                    createElement('svg', { classNames: ['cardIcon'] }),
-                     createElement('a', { classNames: ['link'] }, createElement('svg', { classNames: ['cardIcon'] }))])])])
-    ]);
+                document.createTextNode(description)])])]);
 }
 
 function createContacts(contacts = []) {
@@ -49,9 +45,9 @@ function createElement(type, { classNames, onClick, attributes }, children) {
     const elem = document.createElement(type);
     elem.classList.add(...classNames);
     elem.onclick = onClick;
-    for (const [attrName, attrValue] of Object.entries(attributes)) {
-        elem.setAttribute(attrName, attrValue);
-    }
+    // for (const [attrName, attrValue] of Object.entries(attributes)) {
+    //     elem.setAttribute(attrName, attrValue);
+    // }
     elem.append(...children);
     return elem;
 }
@@ -76,7 +72,7 @@ function createImage({ profilePicture, lastName, id }) {
     image.setAttribute('alt', lastName);
     image.dataset.id = id;
     image.addEventListener('error', imageErrorHandler);
-    // image.addEventListener('load', imageLoadHandler);
+    image.addEventListener('load', imageLoadHandler);
     return image;
 }
 
@@ -85,9 +81,12 @@ function imageErrorHandler({ target }) {
     target.remove();
 }
 
-// function imageLoadHandler({target: {dataset: {id}}, target}) {
-//     document.getElementById(`wrapper${id}`).append(target);
-// }
+function imageLoadHandler({target: {dataset: {id}},target}) {
+    debugger
+    const test =   document.getElementById(`wrapper${id}`)
+    console.log(test)
+    test.append(target);
+}
 
 // UTILS
 function stringToColour(str) {
