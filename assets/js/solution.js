@@ -3,6 +3,9 @@
 /* new URL('https://www.facebook.com/DwayneJohnson'); // {hostname}
 new Map().set('www.facebook.com', 'src to fb icon'); // key-hostname */
 
+
+
+
 const cardContainer = document.getElementById('root');
 
 const cards = responseData.map((place) => createPlaceCardElements(place));
@@ -18,7 +21,9 @@ function createPlaceCardElements(place) {
             createElement('h3', { classNames: ['cardSpecialty'] }, [
                 document.createTextNode(specialty || '')]),
             createElement('p', { classNames: ['cardDescription'] }, [
-                document.createTextNode(description || '')])])]);
+                document.createTextNode(description || '')])
+        ])
+    ]);
 }
 
 
@@ -51,7 +56,7 @@ function imageErrorHandler({ target }) {
     target.remove();
 }
 
-function imageLoadHandler({target: {dataset: {id}},target}) {
+function imageLoadHandler({ target: { dataset: { id } }, target }) {
     document.getElementById(`wrapper${id}`).append(target);
 }
 

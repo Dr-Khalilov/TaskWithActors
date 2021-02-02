@@ -3,8 +3,7 @@ const responseData = [
         id: 1,
         firstName: 'Jason',
         lastName: 'Statham',
-        profilePicture:
-            'https://i.pinimg.com/orignals/24/f5/f8/24f5f8ef9f8af9c7e795ff0ba15f6881.jpg',
+        profilePicture: 'https://i.pinimg.com/orignals/24/f5/f8/24f5f8ef9f8af9c7e795ff0ba15f6881.jpg',
         description: 'Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo.',
         specialty: 'Star',
         contacts: [
@@ -58,6 +57,7 @@ const responseData = [
         profilePicture:
             'https://m.media-amazon.com/images/M/MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwTUyNzc3Nw@@._V1_.jpg',
         description: '',
+        specialty: '',
         contacts: [
             'https://www.instagram.com/therock/?hl=ru',
             'https://twitter.com/realjstatham',
