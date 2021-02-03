@@ -1,10 +1,6 @@
 'use strict';
-
 /* new URL('https://www.facebook.com/DwayneJohnson'); // {hostname}
 new Map().set('www.facebook.com', 'src to fb icon'); // key-hostname */
-
-
-
 
 const cardContainer = document.getElementById('root');
 
@@ -21,9 +17,39 @@ function createPlaceCardElements(place) {
             createElement('h3', { classNames: ['cardSpecialty'] }, [
                 document.createTextNode(specialty || '')]),
             createElement('p', { classNames: ['cardDescription'] }, [
-                document.createTextNode(description || '')])
+                document.createTextNode(description || '')]),
+            createElement('div', {
+                classNames: ['cardLink'][createLinkIcons(['twitter.com',
+                    'www.facebook.com',
+                    'www.instagram.com'])]
+            })
         ])
     ]);
+}
+
+
+const socNetworks = new Map(
+    ['www.facebook.com', './assets/icons/facebook.svg']
+    ['twitter.com', './assets/icons/twitter.svg']
+    ['www.instagram.com', './assets/icons/instagram.svg']
+);
+
+const createLinkIcons = (contacts) => {
+    const arrayWithIcons = contacts.map((contact) => {
+        const { hostname } = new URL(contact);
+        if (socNetworks.has(hostname)) {
+            const classList = socNetworks.get(hostname);
+            const img = document.createElement('img');
+            img.setAttribute('src', scr);
+
+            const a = document.createElement('a');
+            a.setAttribute('href', contact);
+            a.append(img);
+            return a;
+        }
+        return;
+    });
+    return arrayWithIcons;
 }
 
 
@@ -51,57 +77,3 @@ function createImage({ profilePicture, lastName, id }) {
     return image;
 }
 
-// EVENT LISTENERS
-function imageErrorHandler({ target }) {
-    target.remove();
-}
-
-function imageLoadHandler({ target: { dataset: { id } }, target }) {
-    document.getElementById(`wrapper${id}`).append(target);
-}
-
-// UTILS
-/**
- * @param {string} type
- * @param {object} options
- * @param {string[]} options.classNames
- * @param {object} options.attributes
- * @param {function} options.onClick
- * @param {HTMLElement[]} children
- */
-function createElement(type, { classNames, onClick, attributes }, children) {
-    const elem = document.createElement(type);
-    elem.classList.add(...classNames);
-    elem.onclick = onClick;
-    // for (const [attrName, attrValue] of Object.entries(attributes)) {
-    //     elem.setAttribute(attrName, attrValue);
-    // }
-    elem.append(...children);
-    return elem;
-}
-
-
-function createContacts(contacts = []) {
-    return contacts.map((contactLink) => {
-        const { hostname } = new URL(contactLink);
-        const src = mapLink.get(hostname);
-        return createElement('img', {
-            classNames: ['cardIcon'],
-            attributes: { 'src': src, 'alt': 'contact' },
-        });
-    })
-}
-
-function stringToColour(str) {
-    let i;
-    let hash = 0;
-    for (i = 0; i < str.length; i++) {
-        hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    let colour = '#';
-    for (i = 0; i < 3; i++) {
-        const value = (hash >> (i * 8)) & 0xFF;
-        colour += ('00' + value.toString(16)).substr(-2);
-    }
-    return colour;
-}
