@@ -15,7 +15,7 @@ const cards = responseData.map((user) => createPlaceCardElements(user));
 cardContainer.append(...cards);
 
 function createPlaceCardElements(user) {
-    const { firstName, lastName, description, specialty } = user;
+    const { description, specialty, contacts } = user;
     return createElement('li', { classNames: ['cardWrapper'] }, [
         createElement('article', { classNames: ['cardContainer'] }, [
             createCardImage(user), createElement('h2', { classNames: ['cardName'] }, [
@@ -26,7 +26,7 @@ function createPlaceCardElements(user) {
                 document.createTextNode(description || '')]),
             createElement('div', {
                 classNames: ['cardLink']
-            }, [...createLinkIcons(user.contacts)])
+            }, [...createLinkIcons(contacts)])
         ])
     ]);
 }

@@ -97,6 +97,8 @@
 
  .linkIcon:hover{
    background-color:red;
+   transition: 800ms;
  }
 
+ 
 
