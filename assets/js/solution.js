@@ -32,8 +32,6 @@ function createPlaceCardElements(user) {
 }
 
 
-
-
 function createLinkIcons(contacts) {
     const arrayWithIcons = contacts.map((contact) => {
         const { hostname } = new URL(contact);
@@ -41,7 +39,7 @@ function createLinkIcons(contacts) {
             const classList = socNetworks.get(hostname);
             const img = document.createElement('img');
             img.setAttribute('src', classList);
-            img.setAttribute('class','linkIcon');
+            img.setAttribute('class', 'linkIcon');
             const a = document.createElement('a');
             a.setAttribute('href', contact);
             a.setAttribute('target', '_blank');
