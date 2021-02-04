@@ -84,7 +84,7 @@ const responseData = [
         profilePicture:
             'https://www.factroom.ru/wp-content/uploads/2019/06/10-faktov-o-evgenii-ponasenkove-kotoryj-svodit-vsekh-s-uma-1250x883.jpg',
         description: 'Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo.',
-        specialty: 'Star',
+        specialty: 'what are you?',
         contacts: [
             'https://www.facebook.com/Ponasenkov',
             'https://twitter.com/Ponasenkov',
