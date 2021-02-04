@@ -3,9 +3,9 @@
 new Map().set('www.facebook.com', 'src to fb icon'); // key-hostname */
 
 const socNetworks = new Map(
-    [['www.facebook.com', './assets/icons/facebook.svg'],
-    ['twitter.com', './assets/icons/twitter.svg'],
-    ['www.instagram.com', './assets/icons/instagram.svg']]
+    [['www.facebook.com', './assets/icons/facebook.png'],
+    ['twitter.com', './assets/icons/twitter.png'],
+    ['www.instagram.com', './assets/icons/instagram.png']]
 );
 
 const cardContainer = document.getElementById('root');
@@ -19,7 +19,7 @@ function createPlaceCardElements(user) {
     return createElement('li', { classNames: ['cardWrapper'] }, [
         createElement('article', { classNames: ['cardContainer'] }, [
             createCardImage(user), createElement('h2', { classNames: ['cardName'] }, [
-                document.createTextNode(`${firstName} ${lastName}` || '')]),
+                document.createTextNode(getFullName(user) || "")]),
             createElement('h3', { classNames: ['cardSpecialty'] }, [
                 document.createTextNode(specialty || '')]),
             createElement('p', { classNames: ['cardDescription'] }, [
@@ -41,6 +41,7 @@ function createLinkIcons(contacts) {
             const classList = socNetworks.get(hostname);
             const img = document.createElement('img');
             img.setAttribute('src', classList);
+            img.setAttribute('class','linkIcon');
 
             const a = document.createElement('a');
             a.setAttribute('href', contact);

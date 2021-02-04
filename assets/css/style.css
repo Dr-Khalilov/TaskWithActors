@@ -86,14 +86,17 @@
   text-align: justify;
 }
 
-.cardLink {
+.cardLink{
+  height: 50px;
 }
 
-.cardIcon {
+.linkIcon{
   width: 40px;
   height: 40px;
 }
 
-.cardIcon:hover {
-  fill: red;
-}
+ .linkIcon:hover{
+   background-color:red;
+ }
+
+

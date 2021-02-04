@@ -17,6 +17,9 @@ function createElement(type, { classNames, onClick, attributes }, children) {
     return elem;
 }
 
+function getFullName({firstName,lastName}){
+    return `${firstName} ${lastName}`;
+}
 
 function stringToColour(str) {
     let i;
