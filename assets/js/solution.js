@@ -42,9 +42,9 @@ function createLinkIcons(contacts) {
             const img = document.createElement('img');
             img.setAttribute('src', classList);
             img.setAttribute('class','linkIcon');
-
             const a = document.createElement('a');
             a.setAttribute('href', contact);
+            a.setAttribute('target', '_blank');
             a.append(img);
             return a;
         }
