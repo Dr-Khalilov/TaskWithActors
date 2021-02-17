@@ -1,7 +1,4 @@
 'use strict';
-/* new URL('https://www.facebook.com/DwayneJohnson'); // {hostname}
-new Map().set('www.facebook.com', 'src to fb icon'); // key-hostname */
-
 const socNetworks = new Map(
     [['www.facebook.com', './assets/icons/facebook.png'],
     ['twitter.com', './assets/icons/twitter.png'],
